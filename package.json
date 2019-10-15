@@ -1,0 +1,17 @@
+{
+  "name": "movies-app",
+  "version": "1.0.0",
+  "description": "Your movies redefined",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel public/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Apetsi Ampiah",
+  "license": "ISC",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  }
+}
