@@ -8,8 +8,8 @@ const AppRouter = () => (
   <BrowserRouter>
     <Navbar />
     <Switch>
-      <Route path="/" exact={true} component={Homepage} />
-      <Route path="/browse" component={BrowseMovies} />
+      <Route path='/' exact component={Homepage} />
+      <Route path='/browse' component={BrowseMovies} />
     </Switch>
   </BrowserRouter>
 )

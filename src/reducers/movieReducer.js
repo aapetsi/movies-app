@@ -1,5 +1,7 @@
 const initialState = {
-  movies: []
+  movies: [],
+  savedMovies: [],
+  watchedMovies: []
 }
 
 export const movieReducer = (state = initialState, action) => {
