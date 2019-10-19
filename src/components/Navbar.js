@@ -1,11 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Navbar as Nav } from 'react-bootstrap';
+import logo from './video-camera.svg';
 
 const Navbar = () => (
   <div>
-    <NavLink to="/">
-      <h1>Movie App</h1>
-    </NavLink>
+    <Nav bg="dark" variant="dark" expand="lg">
+      <Nav.Brand>
+        <img
+          alt="app-logo"
+          src={logo}
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />
+        {'   '}
+        Movie App
+      </Nav.Brand>
+    </Nav>
     <ul>
       <li>
         <NavLink to="/">Home</NavLink>
