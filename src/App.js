@@ -1,7 +1,7 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import AppRouter from './routers/AppRouter';
-import store from './store/store';
+import React from 'react'
+import { Provider } from 'react-redux'
+import AppRouter from './routers/AppRouter'
+import store from './store/store'
 
 const App = () => (
   <div>
@@ -11,6 +11,6 @@ const App = () => (
       </Provider>
     </React.StrictMode>
   </div>
-);
+)
 
-export default App;
+export default App
