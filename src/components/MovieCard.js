@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { saveMovie } from '../actions/movies';
 
-const MovieCard = ({ dispatch, movie }) => {
+const MovieCard = ({ movie, saveMovie }) => {
   const handleSaveMovie = () => {
-    dispatch(saveMovie(movie));
+    saveMovie(movie);
   };
   return (
     <div>
@@ -19,7 +19,11 @@ const MovieCard = ({ dispatch, movie }) => {
   );
 };
 
+const mapDispatchToProps = {
+  saveMovie
+};
+
 export default connect(
   null,
-  null
+  mapDispatchToProps
 )(MovieCard);
