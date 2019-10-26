@@ -1,4 +1,4 @@
-import { FETCH_ALL_MOVIES } from '../actions/types';
+import { FETCH_ALL_MOVIES, SAVE_MOVIE } from '../actions/types';
 
 const initialState = {
   movies: [],
@@ -12,6 +12,11 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         movies: [...action.payload]
+      };
+    case SAVE_MOVIE:
+      return {
+        ...state,
+        savedMovies: [...state.savedMovies, action.payload]
       };
     default:
       return state;

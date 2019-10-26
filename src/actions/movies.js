@@ -1,12 +1,12 @@
-import axios from 'axios'
-import { FETCH_ALL_MOVIES } from './types'
+import axios from 'axios';
+import { FETCH_ALL_MOVIES, SAVE_MOVIE } from './types';
 
 export const NumberOfMoviesInDatabase = () => {
   axios
     .get('https://yts.lt/api/v2/list_movies.json?limit=50')
     .then((res) => res.data.data.movie_count)
-    .catch((err) => err)
-}
+    .catch((err) => err);
+};
 
 export const fetchAllMovies = () => (dispatch) => {
   axios
@@ -15,7 +15,14 @@ export const fetchAllMovies = () => (dispatch) => {
       dispatch({
         type: FETCH_ALL_MOVIES,
         payload: res.data.data.movies
-      })
+      });
     })
-    .catch((err) => err)
-}
+    .catch((err) => err);
+};
+
+export const saveMovie = (movie) => (dispatch) => {
+  dispatch({
+    type: SAVE_MOVIE,
+    payload: movie
+  });
+};

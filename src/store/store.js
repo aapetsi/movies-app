@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default () => {
+const reduxStore = () => {
   // Store creation
   const store = createStore(
     rootReducer,
@@ -21,3 +21,5 @@ export default () => {
 
   return store;
 };
+
+export default reduxStore;

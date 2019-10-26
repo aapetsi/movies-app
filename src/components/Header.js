@@ -1,19 +1,13 @@
 import React from 'react'
 import { Navbar, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import logo from './video-camera.svg'
+import LogoSvg from './video-camera.svg'
 
 const Header = () => (
   <div>
     <Navbar bg="dark" variant="dark" expand="md">
       <Navbar.Brand>
-        <img
-          alt="app-logo"
-          src={logo}
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-        />
+        <LogoSvg width="30" height="30" className="d-inline-block align-top" />
         {'   '}
         Movie App
       </Navbar.Brand>
