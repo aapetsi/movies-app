@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
   FETCH_ALL_MOVIES,
   SAVE_MOVIE,
-  DELETE_MOVIE_FROM_SAVED_LIST
+  DELETE_MOVIE_FROM_SAVED_LIST,
+  DELETE_ALL_MOVIES_FROM_SAVED_LIST
 } from './types';
 
 export const NumberOfMoviesInDatabase = () => {
@@ -33,4 +34,8 @@ export const saveMovie = (movie) => (dispatch) => {
 
 export const deleteMovieFromSavedList = (id) => (dispatch) => {
   dispatch({ type: DELETE_MOVIE_FROM_SAVED_LIST, payload: id });
+};
+
+export const deleteAllMoviesFromSavedList = () => (dispatch) => {
+  dispatch({ type: DELETE_ALL_MOVIES_FROM_SAVED_LIST });
 };

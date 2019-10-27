@@ -1,7 +1,8 @@
 import {
   FETCH_ALL_MOVIES,
   SAVE_MOVIE,
-  DELETE_MOVIE_FROM_SAVED_LIST
+  DELETE_MOVIE_FROM_SAVED_LIST,
+  DELETE_ALL_MOVIES_FROM_SAVED_LIST
 } from '../actions/types';
 
 const initialState = {
@@ -22,10 +23,15 @@ const movieReducer = (state = initialState, action) => {
         ...state,
         savedMovies: [...state.savedMovies, action.payload]
       };
-
     case DELETE_MOVIE_FROM_SAVED_LIST:
-      console.log(action.payload);
-
+      return {
+        state
+      };
+    case DELETE_ALL_MOVIES_FROM_SAVED_LIST:
+      return {
+        state,
+        savedMovies: []
+      };
     default:
       return state;
   }
