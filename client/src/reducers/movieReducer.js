@@ -29,7 +29,7 @@ const movieReducer = (state = initialState, action) => {
       };
     case DELETE_ALL_MOVIES_FROM_SAVED_LIST:
       return {
-        state,
+        ...state,
         savedMovies: []
       };
     default:

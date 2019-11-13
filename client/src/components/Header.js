@@ -1,10 +1,10 @@
-import React from 'react'
-import { Navbar, Button } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
-import LogoSvg from './video-camera.svg'
+import React from 'react';
+import { Navbar, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import LogoSvg from './video-camera.svg';
 
 const Header = () => (
-  <div>
+  <header>
     <Navbar bg="dark" variant="dark" expand="md">
       <Navbar.Brand>
         <LogoSvg width="30" height="30" className="d-inline-block align-top" />
@@ -33,7 +33,7 @@ const Header = () => (
         </LinkContainer>
       </Navbar.Collapse>
     </Navbar>
-  </div>
-)
+  </header>
+);
 
-export default Header
+export default Header;
