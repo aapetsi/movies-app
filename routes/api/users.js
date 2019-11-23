@@ -1,17 +1,23 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
 
 // load middlewares
 const middlewares = require('../../middleware/index')
+
+// load validation
+const isEmpty = require('../../validation/isEmpty')
+
+// load users model
+const User = require('../../models/Users')
 
 // @route    GET   api/users/test
 // @desc     Test users route
 // @access   Public
 router.get('/test', (req, res) => {
-  res.status(200).json({ message: 'Users route works' });
-});
+  res.status(200).json({ message: 'Users route works' })
+})
 
 // @route    POST   api/users/register
 // @desc     Register new user
@@ -21,8 +27,24 @@ router.post('/register', (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password
-  };
-  res.send(newUser);
-});
+  }
 
-module.exports = router;
+  // check if user already exists in database
+  User.findBy(newUser)
+    .then(user => {
+      if (user) {
+        console.log(user)
+        return res.status(400).json({ message: `This user already exists.` })
+      }
+
+      newUser.password = bcrypt.hashSync(newUser.password, 10)
+      return User.save(newUser).then(user => {
+        res.status(201).json({ message: 'User created successfully' })
+      })
+    })
+    .catch(err => {
+      res.status(err).json({ message: `Unable to save user. ${err.message}` })
+    })
+})
+
+module.exports = router
