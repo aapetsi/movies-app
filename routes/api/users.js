@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
+
+// load middlewares
+const middlewares = require('../../middleware/index')
 
 // @route    GET   api/users/test
 // @desc     Test users route
