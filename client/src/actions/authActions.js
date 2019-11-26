@@ -1,11 +1,14 @@
 import axios from 'axios'
-import { SET_ERRORS } from './types'
+import { SET_ERRORS, REGISTER_USER } from './types'
 
-export const registerUser = userData => dispatch => {
+export const registerUser = (userData, history) => dispatch => {
   axios
     .post('http://localhost:5000/api/users/register', userData)
     .then(res => {
-      console.log(res.data)
+      history.push('/login')
+      dispatch({
+        type: REGISTER_USER
+      })
     })
     .catch(err => {
       dispatch({

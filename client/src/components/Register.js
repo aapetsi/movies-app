@@ -17,7 +17,7 @@ const Register = props => {
   }
   const handleSubmit = e => {
     e.preventDefault()
-    props.registerUser(newUser)
+    props.registerUser(newUser, props.history)
   }
 
   return (
