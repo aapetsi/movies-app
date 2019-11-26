@@ -17,8 +17,4 @@ app.use(cors())
 // routes middleware
 app.use('/api/users', users)
 
-app.get('/', (req, res) => {
-  res.json({ message: 'welcome' })
-})
-
 module.exports = app

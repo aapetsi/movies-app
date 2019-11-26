@@ -1,8 +1,28 @@
 const Validator = require('validator')
+const jwt = require('jsonwebtoken')
+const keys = require('../config/keys')
 
 module.exports = {
   validateRegisterBody,
-  validateLoginBody
+  validateLoginBody,
+  authenticated
+}
+
+function authenticated(req, res, next) {
+  const token = req.headers.authorization
+
+  if (token) {
+    jwt.verify(token, keys.secretOrKey, (err, decodedToken) => {
+      if (err) {
+        res.status(401).json(err)
+      } else {
+        req.decodedToken = decodedToken
+        next()
+      }
+    })
+  } else {
+    res.status(401).json({ message: 'Unauthorised' })
+  }
 }
 
 function validateRegisterBody(req, res, next) {
@@ -48,8 +68,22 @@ function validateRegisterBody(req, res, next) {
 }
 
 function validateLoginBody(req, res, next) {
-  const { email, password } = req.body
-  next()
+  const errors = {}
+  const { email = '', password = '' } = req.body
+
+  if (Validator.isEmpty(email)) {
+    errors.email = 'Email field is required'
+  }
+
+  if (Validator.isEmpty(password)) {
+    errors.password = 'Password field is required'
+  }
+
+  if (!isEmpty(errors)) {
+    res.status(400).json(errors)
+  } else {
+    next()
+  }
 }
 
 function isEmpty(value) {

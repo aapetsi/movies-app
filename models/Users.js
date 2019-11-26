@@ -11,10 +11,10 @@ function find() {
   return db('users')
 }
 
-function findBy({ username, email }) {
+function findBy({ username = '', email }) {
   return db('users')
-    .where({ username })
-    .orWhere({ email })
+    .where({ email })
+    .orWhere({ username })
     .first()
 }
 
