@@ -1,16 +1,16 @@
 import axios from 'axios'
-import jwt_decode from 'jwt-decode'
+import { SET_ERRORS } from './types'
 
-import { GET_ERRORS, SET_CURRENT_USER } from './types'
-
-export const registerUser = (userData, history) => dispatch => {
+export const registerUser = userData => dispatch => {
   axios
     .post('http://localhost:5000/api/users/register', userData)
-    .then(res => history.push('/login'))
-    .catch(err =>
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => {
       dispatch({
-        type: GET_ERRORS,
+        type: SET_ERRORS,
         payload: err.response.data
       })
-    )
+    })
 }

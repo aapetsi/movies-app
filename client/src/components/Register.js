@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { registerUser } from '../actions/authActions'
 
-const Register = () => {
+const Register = props => {
   const [newUser, setNewUser] = useState({
     username: '',
     email: '',
@@ -15,11 +17,9 @@ const Register = () => {
   }
   const handleSubmit = e => {
     e.preventDefault()
-    axios
-      .post('http://localhost:5000/api/users/register', newUser)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err.response.data))
+    props.registerUser(newUser)
   }
+
   return (
     <div>
       <h1>Register</h1>
@@ -33,6 +33,11 @@ const Register = () => {
             value={newUser.username}
             onChange={handleChange}
           />
+          {props.userRegistration.errors.username && (
+            <Form.Text className="text-muted">
+              {props.userRegistration.errors.username}
+            </Form.Text>
+          )}
         </Form.Group>
         <Form.Group>
           <Form.Label>Email</Form.Label>
@@ -50,7 +55,7 @@ const Register = () => {
             type="password"
             placeholder="Password"
             name="password"
-            value={newUser.password2}
+            value={newUser.password}
             onChange={handleChange}
           />
         </Form.Group>
@@ -72,4 +77,12 @@ const Register = () => {
   )
 }
 
-export default Register
+const mapStateToProps = state => ({
+  userRegistration: state.userRegister
+})
+
+const mapDispatchToProps = {
+  registerUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

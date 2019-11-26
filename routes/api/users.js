@@ -21,7 +21,7 @@ router.get('/test', (req, res) => {
 // @route    POST   api/users/register
 // @desc     Register new user
 // @access   Public
-router.post('/register', [middlewares.validateRegisterBody], (req, res) => {
+router.post('/register', middlewares.validateRegisterBody, (req, res) => {
   const newUser = {
     username: req.body.username,
     email: req.body.email,
@@ -32,7 +32,6 @@ router.post('/register', [middlewares.validateRegisterBody], (req, res) => {
   User.findBy(newUser)
     .then(user => {
       if (user) {
-        console.log(user)
         return res.status(400).json({ message: `This user already exists.` })
       }
 
@@ -45,5 +44,10 @@ router.post('/register', [middlewares.validateRegisterBody], (req, res) => {
       res.status(err).json({ message: `Unable to save user. ${err.message}` })
     })
 })
+
+// @route    POST   api/users/login
+// @desc     Login user
+// @access   Public
+router.post('/login', middlewares.validateLoginBody, (req, res) => {})
 
 module.exports = router

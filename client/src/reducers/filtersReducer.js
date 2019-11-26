@@ -3,9 +3,11 @@ const filtersReducerDefaultState = {
   sortBy: 'date'
 }
 
-export const filtersReducer = (state = filtersReducerDefaultState, action) => {
+const filtersReducer = (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
     default:
       return state
   }
 }
+
+export default filtersReducer

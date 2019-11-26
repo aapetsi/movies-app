@@ -1,7 +1,8 @@
 const Validator = require('validator')
 
 module.exports = {
-  validateRegisterBody
+  validateRegisterBody,
+  validateLoginBody
 }
 
 function validateRegisterBody(req, res, next) {
@@ -44,6 +45,11 @@ function validateRegisterBody(req, res, next) {
   } else {
     next()
   }
+}
+
+function validateLoginBody(req, res, next) {
+  const { email, password } = req.body
+  next()
 }
 
 function isEmpty(value) {
