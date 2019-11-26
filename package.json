@@ -2,7 +2,7 @@
   "name": "movie-app",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
@@ -11,7 +11,7 @@
     "client:install": "npm install --prefix client",
     "client:build": "npm run build --prefix client",
     "lint:fix": "standard --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_ENV=testing jest --watchAll --coverage"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "validator": "^12.1.0"
   },
   "devDependencies": {
+    "cross-env": "^6.0.3",
     "jest": "^24.9.0",
     "nodemon": "^2.0.1",
     "standard": "^14.3.1",

@@ -1,22 +1,5 @@
-require('dotenv').config();
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const server = require('./index')
 
-const users = require('./routes/api/users');
+const port = process.env.PORT
 
-const app = express();
-
-// body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// cors middleware
-app.use(cors());
-
-// routes middleware
-app.use('/api/users', users);
-
-const port = process.env.PORT;
-
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+server.listen(port, () => console.log(`Server is running on port ${port}`))

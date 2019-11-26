@@ -7,7 +7,6 @@ const jwt = require('jsonwebtoken')
 const middlewares = require('../../middleware/index')
 
 // load validation
-const isEmpty = require('../../validation/isEmpty')
 
 // load users model
 const User = require('../../models/Users')
@@ -22,7 +21,7 @@ router.get('/test', (req, res) => {
 // @route    POST   api/users/register
 // @desc     Register new user
 // @access   Public
-router.post('/register', (req, res) => {
+router.post('/register', [middlewares.validateRegisterBody], (req, res) => {
   const newUser = {
     username: req.body.username,
     email: req.body.email,
