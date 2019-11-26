@@ -1,7 +1,7 @@
-import React from 'react';
-import { Navbar, Button } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import LogoSvg from './video-camera.svg';
+import React from 'react'
+import { Navbar, Button } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+import LogoSvg from './video-camera.svg'
 
 const Header = () => (
   <header>
@@ -25,6 +25,9 @@ const Header = () => (
         <LinkContainer to="/watched">
           <Button variant="link">Already Watched</Button>
         </LinkContainer>
+        <LinkContainer to="/register">
+          <Button variant="link">Register</Button>
+        </LinkContainer>
         <LinkContainer to="/login">
           <Button variant="link">Login</Button>
         </LinkContainer>
@@ -34,6 +37,6 @@ const Header = () => (
       </Navbar.Collapse>
     </Navbar>
   </header>
-);
+)
 
-export default Header;
+export default Header
