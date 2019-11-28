@@ -99,4 +99,13 @@ router.get('/current', middlewares.authenticated, (req, res) => {
   })
 })
 
+// @route    GET   api/users/
+// @desc     Return all user
+// @access   Private
+router.get('/', (req, res) => {
+  User.find()
+    .then(users => res.json(users))
+    .catch(err => res.json(err))
+})
+
 module.exports = router

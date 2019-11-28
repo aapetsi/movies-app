@@ -28,6 +28,14 @@ describe('Users route', () => {
     })
   })
 
+  describe('[GET] /api/users', () => {
+    test('should return a list of all users', async () => {
+      const response = await request(server).get('/api/users')
+      expect(response.status).toBe(200)
+      expect(response.body.length).toBe(0)
+    })
+  })
+
   describe('[POST] /api/users/register endpoint', () => {
     test('should return error with no credentials provided', async () => {
       const response = await request(server)
