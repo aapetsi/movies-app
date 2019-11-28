@@ -60,6 +60,20 @@ describe('Users route', () => {
       expect(response2.status).toBe(400)
       expect(response2.body).toEqual({ message: 'This user already exists.' })
     })
+
+    test('should return error with mismatched passwords', async () => {
+      const user = {
+        username: 'johndoe',
+        email: 'johndoe@gmail.com',
+        password: '123456',
+        password2: '12345'
+      }
+      const response = await request(server)
+        .post('/api/users/register')
+        .send(user)
+      expect(response.status).toBe(400)
+      expect(response.body).toEqual({ password2: 'Both passwords must match' })
+    })
   })
 
   describe('[POST] /api/users/login endpoint', () => {
